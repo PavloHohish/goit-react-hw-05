@@ -1,0 +1,39 @@
+.back {
+  width: 48px;
+  padding: 4px;
+  border: 1px solid #bbbbbb;
+  border-radius: 4px;
+  text-align: center;
+  margin: 0 0 12px 20px;
+  display: block;
+}
+
+.movieDiv {
+  margin: 0 16px 20px 16px;
+  display: flex;
+  gap: 12px;
+  justify-content: space-around;
+}
+
+.detailsDiv {
+  width: 70%;
+}
+
+.scoreTextShadow {
+  font-weight: 700;
+}
+.scoreGood {
+  color: #04ff00;
+}
+.scoreNeutral {
+  color: #ffc400;
+}
+.scoreBad {
+  color: #ff0000;
+}
+
+.addInfo {
+  padding: 8px 20px;
+  border-top: 1px solid #4b4b4b;
+  border-bottom: 1px solid #4b4b4b;
+}
