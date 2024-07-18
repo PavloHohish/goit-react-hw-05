@@ -20,23 +20,23 @@ export default function MoviesPage({ options }) {
     }
   };
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    const form = e.target;
-    const movieName = form.elements.movieName.value;
-    setQuery(movieName);
-  };
-
-  useEffect(() => {
-    if (query !== '') {
-      fetchMovies();
-    }
-  }, [query]);
-
   const updateQueryString = name => {
     const nextParams = name !== '' ? { name } : {};
     setSearchParams(nextParams);
   };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    const form = e.target;
+    const movieName = form.elements.movieName.value;
+    updateQueryString(movieName);
+  };
+
+  useEffect(() => {
+    if (searchMovieName !== '') {
+      fetchMovies();
+    }
+  }, [searchMovieName]);
 
   return (
     <>
@@ -44,8 +44,8 @@ export default function MoviesPage({ options }) {
         <input
           type="text"
           name="movieName"
-          value={searchMovieName}
-          onChange={e => updateQueryString(e.target.value)}
+          value={query}
+          onChange={e => setQuery(e.target.value)}
         />
         <button type="submit">Search</button>
       </form>

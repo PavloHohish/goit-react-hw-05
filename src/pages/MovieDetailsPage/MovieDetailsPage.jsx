@@ -1,4 +1,4 @@
-import { useState, useEffect, Suspense } from 'react';
+import { useState, useEffect, useRef, Suspense } from 'react';
 import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import clsx from 'clsx';
@@ -17,7 +17,7 @@ export default function MovieDetailsPage({ options, defImg }) {
   const [movie, setMovie] = useState(null);
   const { movieId } = useParams();
   const location = useLocation();
-  const backLinkHref = location.state ?? '/movies';
+  const backLinkHref = useRef(location.state ?? '/movies');
 
   useEffect(() => {
     const fetchMovieDetails = async () => {
@@ -38,7 +38,7 @@ export default function MovieDetailsPage({ options, defImg }) {
 
   return (
     <>
-      <Link className={css.back} to={backLinkHref}>
+      <Link className={css.back} to={backLinkHref.current}>
         Back
       </Link>
 
